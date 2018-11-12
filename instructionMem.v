@@ -1,8 +1,7 @@
-module instructionMem (output reg [7:0] DataOut, input enable, input [7:0] DataIn);
+module instructionMem (output reg [31:0] Instruction, input Enable, input [512:0] PC);
 
 	reg [31:0] Mem[0:127];
-	always @(enable, DataIn) //Whenever Enable and/or MOV is active
-  if (enable) begin
-    
-  end
+	always @(Enable) //Whenever Enable and/or MOV is active
+	if(Enable)
+        Instruction = Mem[PC];
 endmodule
