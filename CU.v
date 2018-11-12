@@ -55,7 +55,18 @@ module control(
       6'b101011: begin // SW 
                 reg_dst = 0;  
                 mem_to_reg = 1;  
-                alu_op = 2'b00;  
+                alu_op = 2'b10;  
+                jump = 0;  
+                branch = 0;  
+                mem_read_write = 0;   
+                alu_src = 1;  
+                reg_write = 0;  
+                end
+
+      6'b100011: begin // LW 
+                reg_dst = 0;  
+                mem_to_reg = 1;  
+                alu_op = 2'b10;  
                 jump = 1;  
                 branch = 0;  
                 mem_read_write = 1;   
@@ -63,16 +74,17 @@ module control(
                 reg_write = 0;  
                 end
 
-      6'b000010: begin // JMP 
+      6'b000100: begin // BEQ
                 reg_dst = 0;  
                 mem_to_reg = 0;  
-                alu_op = 2'b00;  
-                jump = 1;  
-                branch = 0;  
+                alu_op = 2'b11;  
+                jump = 0;  
+                branch = 1;  
                 mem_read_write = 0;   
-                alu_src = 0;  
+                alu_src = 1;  
                 reg_write = 0;  
-                end  
+                end
+
       default: begin  
                 reg_dst = 2'b01;  
                 mem_to_reg = 2'b00;  
