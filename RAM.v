@@ -1,6 +1,6 @@
-module RAM (output reg [7:0] DataOut, output reg MOC, input Enable, MOV, RW, input [511:0] Address, input [7:0] DataIn);
+module RAM (output reg [31:0] DataOut, output reg MOC, input Enable, MOV, RW, input [7:0] Address, input [31:0] DataIn);
 
-	reg [7:0] Mem[0:511];
+	reg [31:0] Mem[0:127];
 	always @(Enable, MOV) //Whenever Enable and/or MOV is active
 	if(Enable)
 		if(MOV) //If MOV=1, proceed with ReadWrite
