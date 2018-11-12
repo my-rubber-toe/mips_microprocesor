@@ -1,0 +1,30 @@
+module controlUnit(
+  output j,
+  b,
+  IRenable,
+  RegDest,
+  RegWrite,
+  ALUop0,
+  ALUop1,
+  ALUop2,
+  ALUsrc,
+  MARenable,
+  MDRenable,
+  RW,
+  MemToReg,
+  MOV,
+  Op0,
+  Op1,
+  Op2,
+  Op3,
+  Op4,
+  Op5,
+  F0,
+  F1,
+  F2,
+  F3,
+  F4,
+  F5
+);
+
+endmodule // controlUnit

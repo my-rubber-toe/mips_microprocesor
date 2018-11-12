@@ -1,25 +1,24 @@
-module aluCtrl (output reg [5:0] result, input [2:0] aluOp, input [5:0]funcIn);
+module aluCtrl (output reg [5:0] result, input [1:0] aluOp, input [5:0]funcIn);
 
   always @(aluOp, funcIn)
     case (aluOp)
       
-      3'b000: assign result = funcIn;
+      2'b00: assign result = funcIn;
 
-      3'b001: //Opcode for CLO
-        assign result = 6'b000111;
+      2'b01: //functions for CLO and CLZ
+        
+        if (funcIn == 6'b100001) begin
+          result = 6'b111000;
+        end else if (funcIn == 6'b100000) begin
+          result = 6'b000111;
+        end
 
-      3'b010: //Opcode for CLZ
-        assign result = 6'b111000;
-            
-      3'b101: //OpCOde for LW
+      2'b10: //function to do SW and LW
         assign result = 6'b100000;
-
-      3'b110: //OpCOde for SW
-        assign result = 6'b100000;  
       
-      3'b111: //OpCOde for BEQ
-        assign result = 6'b100011;    
-
+      2'b11:
+        assign result = 6'b100010;
+        
       default: assign result = funcIn;
     endcase
 endmodule
