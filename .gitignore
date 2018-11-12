@@ -1,12 +1,10 @@
-#result file
+#possible result file
 result
-
-.result
-
+result
 result.vvp
 
 
-#testers
+#possible tester files
 
 tester.vvp
 tester.v
