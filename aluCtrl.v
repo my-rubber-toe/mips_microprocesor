@@ -1,11 +1,11 @@
-module aluCtrl (output reg [5:0] result, input [1:0] aluOp, input [5:0]funcIn);
+module aluCtrl (output reg [5:0] result, input [5:0] aluOp, input [5:0]funcIn);
 
   always @(aluOp, funcIn)
     case (aluOp)
       
-      2'b00: assign result = funcIn;
+      6'b000000: assign result = funcIn;
 
-      2'b01: //functions for CLO and CLZ
+      6'b000001: //functions for CLO and CLZ
         
         if (funcIn == 6'b100001) begin
           result = 6'b111000;
@@ -13,10 +13,10 @@ module aluCtrl (output reg [5:0] result, input [1:0] aluOp, input [5:0]funcIn);
           result = 6'b000111;
         end
 
-      2'b10: //function to do SW and LW
+      6'b000010: //function to do SW and LW
         assign result = 6'b100000;
       
-      2'b11:
+      6'b000011:
         assign result = 6'b100010;
         
       default: assign result = funcIn;
