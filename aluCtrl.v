@@ -1,11 +1,11 @@
-module aluCtrl (output reg [5:0] result, input [5:0] aluOp, input [5:0]funcIn);
+module aluCtrl (output reg [5:0] result, input [3:0] aluOp, input [5:0]funcIn);
 
   always @(aluOp, funcIn)
     case (aluOp)
       
-      6'b000000: assign result = funcIn;
+      4'b0000: assign result = funcIn;
 
-      6'b000001: //functions for CLO and CLZ
+      4'b0001: //functions for CLO and CLZ
         
         if (funcIn == 6'b100001) begin
           result = 6'b111000;
@@ -13,12 +13,37 @@ module aluCtrl (output reg [5:0] result, input [5:0] aluOp, input [5:0]funcIn);
           result = 6'b000111;
         end
 
-      6'b000010: //function to do SW and LW
+      4'b0010: //function to do SW and LW
         assign result = 6'b100000;
       
-      6'b000011:
+      4'b0011: // BEQ
         assign result = 6'b100010;
-        
+      
+      4'b0100: // ADDUI
+        assign result = 6'b100001; // sum addu
+      
+      4'b0101: //LBU
+        assign result = 6'b100000; // sum add
+      
+      4'b0101:
+        assign result = 6'b100000; // sum add
+      
+      4'b0110: //BGTZ
+        // TO-DO ... implement function for BGTZ
+        // assign result = 6'b 
+
+      4'b0111: // SB
+        // TO-DO ... implement function for BGTZ
+        // assign result = 6'b 
+
+      4'b1000: // B
+        // TO-DO ... implement function for BGTZ
+        // assign result = 6'b 
+
+      4'b1001: // B
+        // TO-DO ... implement function for BGTZ
+        // assign result = 6'b 
+
       default: assign result = funcIn;
     endcase
 endmodule
