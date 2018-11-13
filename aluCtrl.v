@@ -30,7 +30,7 @@ module aluCtrl (output reg [5:0] result, input [3:0] aluOp, input [5:0]funcIn);
       
       4'b0110: //BGTZ
         // TO-DO ... implement function for BGTZ
-        // assign result = 6'b 
+        assign result = 6'd50; 
 
       4'b0111: // SB
         // TO-DO ... implement function for BGTZ
@@ -38,11 +38,11 @@ module aluCtrl (output reg [5:0] result, input [3:0] aluOp, input [5:0]funcIn);
 
       4'b1000: // B
         // TO-DO ... implement function for BGTZ
-        // assign result = 6'b 
+        assign result = 6'd52;
 
-      4'b1001: // B
+      4'b1001: // BLEZ
         // TO-DO ... implement function for BGTZ
-        // assign result = 6'b 
+        assign result = 6'd54;
 
       default: assign result = funcIn;
     endcase
