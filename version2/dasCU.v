@@ -85,6 +85,39 @@ module control(
                 reg_write = 0;  
                 end
 
+      // 6'b000100: begin // B
+      //           reg_dst = 0;  
+      //           mem_to_reg = 0;  
+      //           alu_op = 2'b11;  
+      //           jump = 0;  
+      //           branch = 1;  
+      //           mem_read_write = 0;   
+      //           alu_src = 1;  
+      //           reg_write = 0;  
+      //           end
+
+      //  6'b000100: begin // SH
+      //           reg_dst = 0;  
+      //           mem_to_reg = 0;  
+      //           alu_op = 2'b11;  
+      //           jump = 0;  
+      //           branch = 1;  
+      //           mem_read_write = 0;   
+      //           alu_src = 1;  
+      //           reg_write = 0;  
+      //           end 
+
+      //  6'b000100: begin // SB
+      //           reg_dst = 0;  
+      //           mem_to_reg = 0;  
+      //           alu_op = 2'b11;  
+      //           jump = 0;  
+      //           branch = 1;  
+      //           mem_read_write = 0;   
+      //           alu_src = 1;  
+      //           reg_write = 0;  
+      //           end                   
+
       default: begin  
                 reg_dst = 2'b01;  
                 mem_to_reg = 2'b00;  
