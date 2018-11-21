@@ -115,11 +115,13 @@ module ALU32bit(output reg [31:0] result, output reg Z_flag, input [5:0]func, in
       6'b010000:
         begin //MFHI
           // rd = HI
+          result = a;
         end
 
       6'b010010:
         begin //MFLO
           // rd = LO
+          result = a;
         end
 
       6'b001011:
