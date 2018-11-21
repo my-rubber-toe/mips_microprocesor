@@ -22,7 +22,7 @@ module aluCtrl (output reg [5:0] result, input [4:0] aluOp, input [5:0]funcIn);
       5'b00011: // SLTI and SLTIU
         assign result = 6'b100000; // (rs < imm16) ? rt = 1 : rt = 0; ...  for comparison operation, subtract values
       
-      5'b000100: // ANDI
+      5'b00100: // ANDI
         assign result = 6'b100100; // use AND function
       
       5'b00101: // ORI
@@ -40,8 +40,8 @@ module aluCtrl (output reg [5:0] result, input [4:0] aluOp, input [5:0]funcIn);
       5'b01000: // LW
         assign result = 6'b100000; // load value in memory [rs + imm16]
       
-      5'b01000: // LH
-        assign result = 6'b100000; // load half word with sign extention in memory [rs + imm16]
+      // 5'b01000: // LH
+      //   assign result = 6'b100000; // load half word with sign extention in memory [rs + imm16]
       
       5'b01001: // LHU
         assign result = 6'b100000; // load half word with NO sign extention in memory [rs + imm16]
