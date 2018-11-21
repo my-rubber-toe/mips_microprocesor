@@ -9,7 +9,7 @@ module control(
  always @(*)  
  begin  
       if(reset == 1'b1) begin // no Op 
-                reg_dst = 1;  
+                reg_dst = 0;  
                 mem_to_reg = 0;  
                 alu_op = 2'b00;  
                 jump = 0;  
