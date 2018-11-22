@@ -32,6 +32,33 @@ module mips_32(
   wire [31:0] outB;
   wire [31:0] muxCout;
   wire [4:0] aluCtrlOut;
+  wire [31:0] aluOut;
+  wire zFlag;
+  wire [31:0] RAMout;
+  wire [4:0] muxDout;
+
+  wire [31:0] addAout;
+  wire [25:0] sifterJMPout;
+  wire [31:0] sifterBranchout;
+  wire [31:0] addBout;
+  wire [31:0] muxEout;
+  wire [31:0] muxFout;
+  wire andOut;
+
+
+  ////////// STATE FLAGS ////////////
+  wire  reg_dst;
+  wire reg_write;
+  wire alu_src;
+  wire [4:0] alu_fnc;
+  wire RAMEnable;
+  wire RW;
+  wire mem_to_reg;
+  wire jump;  
+  wire branch;  
+  wire [1:0] HILO;
+  wire MOC;
+  wire MOV;
 
 
 
