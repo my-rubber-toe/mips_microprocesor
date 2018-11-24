@@ -1,9 +1,9 @@
 module control( 
   input[5:0] opcode,  
-  input reset,  
+  input reset, MOC
   output reg reg_dst, mem_to_reg,
   output reg[4:0] alu_fnc,
-  output reg MOV, MOC, HILO, RAMEnable, jump, branch, RW, alu_src, reg_write                     
+  output reg MOV, HILO, RAMEnable, jump, branch, RW, alu_src, reg_write                     
    );  
 
  always @(*)  
