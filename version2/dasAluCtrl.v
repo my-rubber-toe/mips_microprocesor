@@ -1,9 +1,8 @@
 module aluCtrl (output reg [5:0] result, input [4:0] aluOp, input [5:0]funcIn);
 
   always @(aluOp, funcIn)
-    case (aluOp)
-      
-      5'b00000: assign result = funcIn;
+  case (aluOp)
+    5'b00000: assign result = funcIn;
 
       ///////////////////////EXCEPTIONS///////////////////////////////////
       5'b00001: //functions for CLO and CLZ
@@ -86,7 +85,7 @@ module aluCtrl (output reg [5:0] result, input [4:0] aluOp, input [5:0]funcIn);
       
       5'b10111: // BLTZ
         // assign result = 6'b100000; // 
-
-      default: assign result = funcIn;
-    endcase
+    default: 
+      assign result = funcIn;
+  endcase
 endmodule
