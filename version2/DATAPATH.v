@@ -11,10 +11,12 @@
 `include "dasMuxE.v"
 `include "dasMuxF.v"
 `include "dasRAM_ACCESS.v"
+<<<<<<< HEAD
 `include "RAM.v"
+=======
+>>>>>>> 24e2dd067389601a6aad6d86df1a4135a3f411cc
 `include "dasRegister_File.v"
-`include "dasRegister.v"
-`include "dasShifterBranch.v"
+  `include "dasShifterBranch.v"
 `include "dasShifterJMP.v"
 `include "dasSignExt.v"
 `include "dasAND.v"
@@ -53,7 +55,7 @@ module mips_32(
   wire  reg_dst;
   wire reg_write;
   wire alu_src;
-  wire [4:0] alu_fnc;
+  wire [5:0] alu_fnc;
   wire RAMEnable;
   wire RW;
   wire mem_to_reg;
@@ -71,19 +73,27 @@ module mips_32(
 /////////////////////////COMPONENTS////////////////////////////////////
 
 reg [511:0] PC = 512'd0;
-intructionMem dasInstructionMem(ir, clk, PC);
-cu dasCU( ir[31:26], reset, MOC, reg_dst, mem_to_reg, alu_fnc, MOV, HILO, RAMEnable, jump, branch, RW, alu_src, reg_write);
+
+
+initial begin
+    $monitor("RAM_OUT=%b--PC=%b", RAMout, pc);
+    $monitor("memInput=%b, MemReg=%b", MEM_input, MemReg);
+    $monitor("IR=%b", ir);
+end
+
+instructionMem instructionMem(ir, clk, PC);
+control control( ir[31:26], reset, MOC, reg_dst, mem_to_reg, alu_fnc, MOV, HILO, RAMEnable, jump, branch, RW, alu_src, reg_write);
 
 muxA muxA(muxAout, HILO, ir[25:21], LO, HI);
 muxB muxB(muxBout, reg_dst, ir[20:16], ir[15:11]);
-registerFile registerFile(outA, outB, muxDout, muxAout, ir[20:16], muxBout, clk);
+register_file register_file(outA, outB, muxDout, muxAout, ir[20:16], muxBout, clk);
 signExtender signExtender(signExtOut, ir[15:0]);
 aluCtrl aluCtrl(aluCtrlOut, alu_fnc, ir[5:0]);
 muxC muxC(muxCout, alu_src, outA, signExtOut);
-alu alu(aluOut,zFlag, aluCtrlOut,outA, signExtOut);
+ALU32bit ALU32bit(aluOut,zFlag, aluCtrlOut,outA, signExtOut);
 RAM RAM(RAMout, MOC, RAMEnable, MOV, RW, outB, aluOut);
 muxD muxD(muxCout,mem_to_reg, aluOut, RAMout);
-shifterJMP shifterJMP(sifterJMPout,  ir[25:0]),;
+shifterJMP shifterJMP(sifterJMPout,  ir[25:0]);
 addA addA(addAout, pcout2);
 shifterBranch shifterBranch(sifterBranchOut, signExtOut);
 addB addB(addBout, addAout, sifterBranchOut);
