@@ -11,7 +11,7 @@
 `include "dasMuxE.v"
 `include "dasMuxF.v"
 `include "dasRAM_ACCESS.v"
-`include "dasRAM.v"
+`include "RAM.v"
 `include "dasRegister_File.v"
 `include "dasRegister.v"
 `include "dasShifterBranch.v"
