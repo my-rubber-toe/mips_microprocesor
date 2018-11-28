@@ -144,7 +144,7 @@ module ALU32bit(output reg [31:0] result, output reg Z_flag, input [5:0]func, in
           // LO = rs
         end
 
-      6'd110010:
+      6'b110010:
         begin //BGTZ
           if (a > 32'd0) begin
             Z_flag = 1;

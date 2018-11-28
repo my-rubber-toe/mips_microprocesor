@@ -82,10 +82,5 @@ module aluCtrl (output reg [5:0] result, input [4:0] aluOp, input [5:0]funcIn);
 
       5'b10110: // BLEZ
         assign result = 6'd54; // 
-      
-      5'b10111: // BLTZ
-        // assign result = 6'b100000; // 
-    default: 
-      assign result = funcIn;
   endcase
 endmodule
